@@ -1,0 +1,197 @@
+# Default configuration for Cardiovascular Risk Prediction Pipeline
+
+# Data paths
+data:
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed"
+  external_data_path: "data/external"
+  output_path: "outputs"
+
+# Metabolic syndrome criteria (ATP III guidelines)
+metabolic_syndrome:
+  criteria:
+    # Waist circumference (cm) - varies by ethnicity
+    waist_circumference:
+      caucasian_male: 102
+      caucasian_female: 88
+      asian_male: 90
+      asian_female: 80
+    
+    # Blood pressure (mmHg)
+    blood_pressure:
+      systolic: 130
+      diastolic: 85
+    
+    # Fasting glucose (mg/dL)
+    fasting_glucose: 100
+    
+    # Triglycerides (mg/dL)
+    triglycerides: 150
+    
+    # HDL cholesterol (mg/dL)
+    hdl_cholesterol:
+      male: 40
+      female: 50
+  
+  # Number of criteria required for diagnosis (typically 3 out of 5)
+  required_criteria: 3
+
+# Data cleaning parameters
+data_cleaning:
+  # Outlier detection methods
+  outlier_detection:
+    method: "iqr"  # Options: "iqr", "zscore", "isolation_forest"
+    iqr_multiplier: 1.5
+    zscore_threshold: 3.0
+  
+  # Missing value handling
+  missing_values:
+    strategy: "interpolate"  # Options: "drop", "interpolate", "forward_fill", "backward_fill"
+    max_missing_percentage: 0.3
+  
+  # Temporal data handling
+  temporal:
+    min_observations_per_patient: 2
+    max_gap_days: 365  # Maximum gap between observations
+
+# Feature engineering
+feature_engineering:
+  # Temporal features
+  temporal_features:
+    # Time-based aggregations
+    aggregations: ["mean", "std", "min", "max", "trend", "variability"]
+    
+    # Time windows for feature calculation (days)
+    time_windows: [30, 90, 180, 365]
+  
+  # Clinical features
+  clinical_features:
+    # Risk factors to include
+    risk_factors:
+      - "age"
+      - "sex"
+      - "smoking_status"
+      - "diabetes_status"
+      - "family_history_cvd"
+      - "bmi"
+      - "waist_circumference"
+    
+    # Laboratory values
+    lab_values:
+      - "total_cholesterol"
+      - "ldl_cholesterol"
+      - "hdl_cholesterol"
+      - "triglycerides"
+      - "glucose"
+      - "hba1c"
+    
+    # Vital signs
+    vital_signs:
+      - "systolic_bp"
+      - "diastolic_bp"
+      - "heart_rate"
+
+# Model configuration
+model:
+  # Risk prediction algorithm (black box interface)
+  algorithm:
+    name: "framingham_risk_score"  # Default algorithm
+    parameters: {}
+  
+  # Cross-validation settings
+  cross_validation:
+    n_folds: 5
+    random_state: 42
+    stratify: true
+  
+  # Train-test split
+  train_test_split:
+    test_size: 0.2
+    random_state: 42
+    stratify: true
+
+# Validation metrics
+validation:
+  # Primary metrics
+  primary_metrics:
+    - "auc_roc"
+    - "sensitivity"
+    - "specificity"
+    - "ppv"
+    - "npv"
+  
+  # Secondary metrics
+  secondary_metrics:
+    - "accuracy"
+    - "f1_score"
+    - "precision"
+    - "recall"
+    - "calibration_slope"
+    - "calibration_intercept"
+  
+  # Calibration
+  calibration:
+    n_bins: 10
+    method: "quantile"  # Options: "uniform", "quantile"
+  
+  # Subgroup analysis
+  subgroup_analysis:
+    groups:
+      - "age_group"
+      - "sex"
+      - "baseline_risk"
+      - "metabolic_syndrome_severity"
+    
+    age_groups:
+      - [18, 40]
+      - [40, 60]
+      - [60, 80]
+      - [80, 100]
+    
+    baseline_risk_groups:
+      low: [0, 0.1]
+      moderate: [0.1, 0.2]
+      high: [0.2, 1.0]
+
+# Visualization settings
+visualization:
+  # Plot settings
+  plots:
+    style: "seaborn-v0_8"
+    figure_size: [12, 8]
+    dpi: 300
+  
+  # Color schemes
+  colors:
+    primary: "#2E86AB"
+    secondary: "#A23B72"
+    success: "#F18F01"
+    warning: "#C73E1D"
+  
+  # Output formats
+  output_formats: ["png", "pdf", "svg"]
+
+# Reporting
+reporting:
+  # Output formats
+  formats: ["html", "pdf", "docx"]
+  
+  # Template settings
+  templates:
+    html_template: "templates/report_template.html"
+    pdf_template: "templates/report_template.tex"
+  
+  # FDA 510(k) specific settings
+  fda_510k:
+    include_algorithm_description: true
+    include_validation_protocol: true
+    include_statistical_analysis_plan: true
+    include_risk_benefit_analysis: true
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/pipeline.log"
+  max_file_size: "10MB"
+  backup_count: 5
