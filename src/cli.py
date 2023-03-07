@@ -573,3 +573,4 @@ def run_pipeline(ctx, config, output):
 
 if __name__ == '__main__':
     cli()
+
