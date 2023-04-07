@@ -303,3 +303,4 @@ class DataIngestion:
                    f"{summary['missing_data_summary']['missing_percentage']:.1f}% missing data")
         
         return summary
+
