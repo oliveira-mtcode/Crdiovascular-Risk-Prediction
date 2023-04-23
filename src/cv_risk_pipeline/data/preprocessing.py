@@ -511,3 +511,4 @@ class DataPreprocessor:
         logger.info(f"Feature matrix created: {X.shape[0]} samples, {X.shape[1]} features")
         
         return X, y
+
