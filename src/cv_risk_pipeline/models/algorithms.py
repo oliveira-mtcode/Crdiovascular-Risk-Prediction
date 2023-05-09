@@ -524,3 +524,4 @@ class CustomRiskModel(RiskPredictionModel):
         """
         # Use all numeric columns by default
         return data.select_dtypes(include=[np.number]).columns.tolist()
+
