@@ -9,3 +9,4 @@ from .risk_prediction import RiskPredictionModel
 from .algorithms import FraminghamRiskScore, PooledCohortEquation, CustomRiskModel
 
 __all__ = ["RiskPredictionModel", "FraminghamRiskScore", "PooledCohortEquation", "CustomRiskModel"]
+
