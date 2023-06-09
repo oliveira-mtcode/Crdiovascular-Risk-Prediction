@@ -652,3 +652,4 @@ class RegulatoryReporter:
                 'External validation in diverse populations should be conducted'
             ]
         }
+
