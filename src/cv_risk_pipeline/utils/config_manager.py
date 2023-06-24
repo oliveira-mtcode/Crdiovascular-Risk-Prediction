@@ -646,3 +646,4 @@ logging:
             f.write(template)
         
         logger.info(f"Configuration template created at {output_path}")
+
