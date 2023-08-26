@@ -488,3 +488,4 @@ class ClinicalVisualizer:
             logger.warning(f"Failed to generate interactive dashboard: {e}")
         
         logger.info("All clinical plots generated successfully")
+
