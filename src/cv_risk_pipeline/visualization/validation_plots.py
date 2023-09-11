@@ -501,3 +501,4 @@ class ValidationPlots:
             logger.warning(f"Failed to generate temporal performance: {e}")
         
         logger.info("Validation report generated successfully")
+
