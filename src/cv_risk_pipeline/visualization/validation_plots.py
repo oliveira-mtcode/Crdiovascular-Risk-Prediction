@@ -502,3 +502,4 @@ class ValidationPlots:
         
         logger.info("Validation report generated successfully")
 
+
