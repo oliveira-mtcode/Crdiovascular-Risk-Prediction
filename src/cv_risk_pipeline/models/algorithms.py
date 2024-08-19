@@ -526,3 +526,4 @@ class CustomRiskModel(RiskPredictionModel):
         return data.select_dtypes(include=[np.number]).columns.tolist()
 
 
+
