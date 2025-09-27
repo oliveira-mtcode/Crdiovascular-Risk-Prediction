@@ -23,7 +23,7 @@ This pipeline provides a complete solution for developing, validating, and deplo
 
 1. **Clone the repository**:
 ```bash
-git clone https://github.com/your-org/cardiovascular-risk-prediction.git
+git clone https://github.com/oliveira-mtcode/cardiovascular-risk-prediction.git
 cd cardiovascular-risk-prediction
 ```
 
@@ -69,33 +69,6 @@ python -m src.cli validate -i outputs/metabolic_syndrome/metabolic_syndrome_data
 python -m src.cli report -i outputs/validation/validation_results.json -o outputs/reports
 ```
 
-## 📊 Pipeline Workflow
-
-```mermaid
-graph TD
-    A[Clinical Data] --> B[Data Ingestion]
-    B --> C[Data Cleaning]
-    C --> D[Metabolic Syndrome Identification]
-    D --> E[Feature Engineering]
-    E --> F[Model Training]
-    F --> G[Statistical Validation]
-    G --> H[Subgroup Analysis]
-    H --> I[Temporal Validation]
-    I --> J[Regulatory Documentation]
-    J --> K[FDA 510(k) Submission]
-    
-    B --> L[EDA & Visualization]
-    G --> M[Performance Metrics]
-    H --> N[Equity Analysis]
-    I --> O[Bias Assessment]
-    
-    style A fill:#e1f5fe
-    style K fill:#c8e6c9
-    style L fill:#fff3e0
-    style M fill:#f3e5f5
-    style N fill:#e8f5e8
-    style O fill:#fff8e1
-```
 
 ## 🏗️ Architecture
 
@@ -351,12 +324,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 This software is intended for research and development purposes. For clinical use, ensure compliance with applicable regulatory requirements and conduct appropriate validation studies.
 
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/your-org/cardiovascular-risk-prediction/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-org/cardiovascular-risk-prediction/discussions)
-- **Email**: support@clinical-ai.com
-
 ## 🙏 Acknowledgments
 
 - Framingham Heart Study for risk prediction algorithms
@@ -366,7 +333,6 @@ This software is intended for research and development purposes. For clinical us
 
 ---
 
-**Built with ❤️ for clinical decision support and patient care**
 
 
 
